@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>
+  <mat-icon>sports_motorsports</mat-icon>
+  Anuncio
+</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="anuncioForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Marca</mat-label>
+      <mat-select formControlName="marca" (selectionChange)="obterModelos($event.value.ID)" [compareWith]="compararMarca">
+        <mat-option *ngFor="let marca of marcas$ | async" [value]="marca">{{marca.Name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Modelo</mat-label>
+      <mat-select formControlName="modelo" (selectionChange)="obterVersoes($event.value.ID)" [compareWith]="compararModelo">
+        <mat-option *ngFor="let modelo of modelos$ | async" [value]="modelo">{{modelo.Name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Versão</mat-label>
+      <mat-select formControlName="versao">
+        <mat-option *ngFor="let versao of versoes$ | async" [value]="versao.Name">{{versao.Name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Ano</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="ano"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Quilometragem</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="quilometragem"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Obersevação</mat-label>
+      <input matInput placeholder="Placeholder" formControlName="observacao"/>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-raised-button [mat-dialog-close]="false">Cancelar</button>
+  <button mat-raised-button color="primary" *ngIf="!data?.id" [disabled]="!anuncioForm.valid" (click)="criarAnuncio()">Criar</button>
+  <button mat-raised-button color="primary" *ngIf="data?.id" [disabled]="!anuncioForm.valid" (click)="editarAnuncio()">Editar</button>
+</div>

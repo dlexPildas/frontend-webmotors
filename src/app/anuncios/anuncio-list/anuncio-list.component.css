@@ -1,0 +1,33 @@
+ul {
+  list-style: none;
+  padding: 10px;
+}
+
+li {
+  min-height: 50px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+
+span {
+  flex: 1;
+  text-align: center;
+  padding: 2px;
+}
+
+.doble-size {
+  flex: 2;
+}
+
+
+.button-new {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  background: #c80a2e;
+}

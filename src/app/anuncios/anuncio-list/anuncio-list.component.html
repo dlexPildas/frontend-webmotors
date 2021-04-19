@@ -1,0 +1,46 @@
+<ul>
+  <li>
+    <span>
+      <strong>Ano</strong>
+    </span>
+    <span>
+      <strong>Marca</strong>
+    </span>
+    <span>
+      <strong>Modelo</strong>
+    </span>
+    <span class="doble-size">
+      <strong>Versão</strong>
+    </span>
+    <span>
+      <strong>Quilometragem</strong>
+    </span>
+    <span class="doble-size">
+      <strong>Observacao</strong>
+    </span>
+    <span>
+      <strong></strong>
+    </span>
+  </li>
+
+  <li *ngFor="let anuncio of anuncios">
+    <span>{{anuncio.ano}}</span>
+    <span>{{anuncio.marca}}</span>
+    <span>{{anuncio.modelo}}</span>
+    <span class="doble-size">{{anuncio.versao}}</span>
+    <span>{{anuncio.quilometragem}}</span>
+    <span class="doble-size">{{anuncio.observacao}}</span>
+    <span>
+      <button mat-icon-button aria-label="Editar anuncio" (click)="editarAnuncio(anuncio)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" aria-label="Deletar anuncio" (click)="deletarAnuncio(anuncio.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </span>
+  </li>
+</ul>
+
+<button mat-fab color="warn" class="button-new" aria-label="Example icon button with a home icon" (click)="criarAnuncio()">
+  <mat-icon>add</mat-icon>
+</button>
