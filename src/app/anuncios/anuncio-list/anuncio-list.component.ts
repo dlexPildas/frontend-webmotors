@@ -31,10 +31,14 @@ export class AnuncioListComponent implements OnInit {
   criarAnuncio(): void {
     this.dialog.open(AnuncioComponent,  {
       width: '850px',
-      data: null
+      data: null,
+      disableClose: true
     })
     .afterClosed()
-    .subscribe(result => {
+    .subscribe( (result: boolean) => {
+      if (!result) {
+        return;
+      }
       this._snackBar.open('Criado com sucesso!', '😃', {
         duration: 5000
       });
@@ -45,7 +49,8 @@ export class AnuncioListComponent implements OnInit {
   editarAnuncio(anuncio: Anuncio): void {
     this.dialog.open(AnuncioComponent, {
       width: '850px',
-      data: anuncio
+      data: anuncio,
+      disableClose: true
     })
       .afterClosed()
       .subscribe((response: boolean) => {

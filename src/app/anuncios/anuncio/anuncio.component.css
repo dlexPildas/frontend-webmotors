@@ -6,3 +6,9 @@ form {
 mat-form-field {
   margin: 0 5px;
 }
+
+@media(max-width: 900px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+}
